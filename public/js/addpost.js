@@ -1,8 +1,25 @@
-function savePostHandler(){
-    alert("add")
-}
+const addPostFormHandler = async (event) => {
+  event.preventDefault();
+
+  const title = document.querySelector('#postTitle').value.trim();
+  const text = document.querySelector('#postText').value.trim();
+console.log(title,text)
+  if (title && text) {
+    const response = await fetch('/api/post', {
+      method: 'POST',
+      body: JSON.stringify({ title, text }),
+      headers: { 'Content-Type': 'application/json' },
+    });
+
+    if (response.ok) {
+      document.location.replace('/dashboard');
+    } else {
+      alert('Failed to log in.');
+    }
+  }
+};
   
   document
     .querySelector('#savePostButton')
-    .addEventListener('submit', savePostHandler);
+    .addEventListener('click', addPostFormHandler);
   

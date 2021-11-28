@@ -7,20 +7,32 @@ const withAuth = require('../utils/auth');
 router.get('/', withAuth, async (req, res) => {
   try {
     const postData = await Post.findAll({
-      include: [{ model: User },],
+      include: [{ model: User }],
     });
 
     const allInfo = postData.map((user) => user.get({ plain: true }));
     res.render('dashboard', { allInfo, loggedIn: req.session.loggedIn });
-    console.log(allInfo)
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
   }
 });
 
-// GET one gallery
-// Use the custom middleware before allowing the user to access the gallery
+// router.get('/usres/:id', withAuth, async (req, res) => {
+//   try {
+//     const postData = await User.findAll({
+//       include: [{ model: Post }],
+//     });
+
+//     const allInfo = postData.map((user) => user.get({ plain: true }));
+//     res.render('dashboard', { allInfo, loggedIn: req.session.loggedIn });
+//   } catch (err) {
+//     console.log(err);
+//     res.status(500).json(err);
+//   }
+// });
+
+// Use the custom middleware before allowing the user to access post
 router.get('/post/:id', async (req, res) => {
   try {
     const postData = await Post.findByPk(req.params.id, {
@@ -29,7 +41,7 @@ router.get('/post/:id', async (req, res) => {
 
     const allInfo = [postData.get({ plain: true })];
     res.render('dashboard', { allInfo, loggedIn: req.session.loggedIn });
-    console.log(allInfo)
+    // console.log(allInfo)
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
