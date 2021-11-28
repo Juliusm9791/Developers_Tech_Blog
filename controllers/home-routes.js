@@ -1,21 +1,22 @@
 const router = require('express').Router();
 const { User, Post } = require('../models');
 // Import the custom middleware
-const withAuth = require('../utils/auth');
+// const withAuth = require('../utils/auth');
 
 // GET all info for homepage
 router.get('/', async (req, res) => {
   try {
-    const userData = await User.findAll({
+    const userData = await Post.findAll({
       include: [
         {
-          model: Post,
+          model: User,
         },
       ],
     });
 
     const allInfo = userData.map((user) => user.get({ plain: true }));
     res.render('homepage', { allInfo, loggedIn: req.session.loggedIn });
+    console.log(allInfo, req.session)
   } catch (err) {
     console.log(err);
     res.status(500).json(err);

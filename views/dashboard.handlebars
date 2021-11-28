@@ -4,15 +4,20 @@
   </div>
 </div>
 <button type="button" class="btn btn-primary my-3" id="addPostButton">Add Post</button>
+
 {{#each allInfo }}
-{{#if posts}}
 <div class="card text-dark bg-light my-3">
-  <div class="card-header">Posted By <strong>{{username}}</strong></div>
-  {{> homepage-details}}
-  {{else}}
-  {{/if}}
+    <div class="card-header d-inline-flex p-2 justify-content-between">
+        <a class="me-3" href="/dashboard/post/{{id}}"><div><strong>{{title}}</strong></div></a>
+        <div class="ms-3">Posted By <strong>{{user.username}}</strong> on {{createdAt}}</div>
+    </div>
+    <div class="card-body">
+        {{!-- <h5 class="card-title">{{title}}</h5> --}}
+        <p class="card-text">{{text}}</p>
+    </div>
 </div>
 {{/each}}
+
 
 <script>
   function redirect() {

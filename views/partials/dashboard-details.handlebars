@@ -1,6 +1,8 @@
-   {{#each posts }}
-  <div class="card-body">
+{{#each posts }}
+<div class="card-body">
+  <a href="/dashboard/post/{{id}}">
     <h5 class="card-title">{{title}}</h5>
-    <p class="card-text">{{text}}</p>
-  </div>
-   {{/each}}
+  </a>
+  <p class="card-text">{{text}}</p>
+</div>
+{{/each}}
