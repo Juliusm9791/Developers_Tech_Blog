@@ -4,7 +4,7 @@ const { User, Post } = require('../models');
 const withAuth = require('../utils/auth');
 
 // GET all info for homepage
-router.get('/', async (req, res) => {
+router.get('/', withAuth, async (req, res) => {
   try {
     const userData = await User.findAll({
       include: [
@@ -15,7 +15,7 @@ router.get('/', async (req, res) => {
     });
 
     const allInfo = userData.map((user) => user.get({ plain: true }));
-    res.render('homepage', { allInfo, loggedIn: req.session.loggedIn });
+    res.render('dashboard', { allInfo, loggedIn: req.session.loggedIn });
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
