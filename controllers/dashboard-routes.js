@@ -33,15 +33,15 @@ router.get('/', withAuth, async (req, res) => {
 // });
 
 // Use the custom middleware before allowing the user to access post
-router.get('/post/:id', async (req, res) => {
+router.get('/post/:id', withAuth, async (req, res) => {
   try {
     const postData = await Post.findByPk(req.params.id, {
       include: [{ model: User },],
     });
 
-    const allInfo = [postData.get({ plain: true })];
-    res.render('dashboard', { allInfo, loggedIn: req.session.loggedIn });
-    // console.log(allInfo)
+    const allInfo = postData.get({ plain: true });
+    res.render('updatepost', { allInfo, loggedIn: req.session.loggedIn });
+    console.log(allInfo)
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
@@ -63,13 +63,13 @@ router.get('/post/:id', async (req, res) => {
 //   }
 // });
 
-router.get('/login', (req, res) => {
-  if (req.session.loggedIn) {
-    res.redirect('/');
-    return;
-  }
+// router.get('/login', (req, res) => {
+//   if (req.session.loggedIn) {
+//     res.redirect('/');
+//     return;
+//   }
 
-  res.render('login');
-});
+//   res.render('login');
+// });
 
 module.exports = router;

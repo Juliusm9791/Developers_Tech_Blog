@@ -1,11 +1,10 @@
 {{#each allInfo }}
 <div class="card text-dark bg-light my-3">
     <div class="card-header d-inline-flex p-2 justify-content-between">
-        <div class="me-3" ><strong>{{title}}</strong></div>
+        <div class="me-3"><strong>{{title}}</strong></div>
         <div class="ms-3">Posted By <strong>{{user.username}}</strong> on {{createdAt}}</div>
     </div>
     <div class="card-body">
-        {{!-- <h5 class="card-title">{{title}}</h5> --}}
         <p class="card-text">{{text}}</p>
     </div>
 </div>
