@@ -28,26 +28,17 @@ const deletePostFormHandler = async (event) => {
   const id = window.location.toString().split('/')[
     window.location.toString().split('/').length - 1
   ];
-
-  // const title = document.querySelector('#updateTitle').value.trim();
-  // const text = document.querySelector('#updateText').value.trim();
-  // console.log(title, text)
-  // if (title && text) {
-    // const response = 
-    await fetch(`/api/post/${id}`, {
+    const response = await fetch(`/api/post/${id}`, {
       method: 'DELETE',
-      body: JSON.stringify({ title, text }),
-      headers: { 'Content-Type': 'application/json' },
     });
 
-    // if (response.ok) {
-    //   document.location.replace('/dashboard');
-    // } else {
-    //   alert('Failed to log in.');
-    // }
+    if (response.ok) {
+      document.location.replace('/dashboard');
+    } else {
+      alert('Failed to log in.');
+    }
   
 };
-
 
 document
   .querySelector('#updatePostButton')
@@ -55,5 +46,5 @@ document
 
 document
   .querySelector('#deletePostButton')
-  .addEventListener('click', updatePostFormHandler);
+  .addEventListener('click', deletePostFormHandler);
 

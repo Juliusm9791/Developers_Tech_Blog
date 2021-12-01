@@ -3,7 +3,6 @@ const addPostFormHandler = async (event) => {
 
   const title = document.querySelector('#postTitle').value.trim();
   const text = document.querySelector('#postText').value.trim();
-console.log(title,text)
   if (title && text) {
     const response = await fetch('/api/post', {
       method: 'POST',
