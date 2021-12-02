@@ -1,11 +1,12 @@
 const router = require('express').Router();
-const { User, Post } = require('../../models');
+const { User, Post, Comment, PostComment } = require('../../models');
+const withAuth = require('../../utils/auth');
 
 // Find all posts
 router.get('/', async (req, res) => {
     try {
         const postData = await Post.findAll({
-            include: [{ model: User }],
+            include: [{ model: User }, { model: Comment }],
         });
         res.status(200).json(postData);
     } catch (err) {
@@ -31,12 +32,12 @@ router.get('/:id', async (req, res) => {
 });
 
 // Create new post
-router.post('/', async (req, res) => {
+router.post('/', withAuth, async (req, res) => {
     try {
         const postData = await Post.create({
             title: req.body.title,
             text: req.body.text,
-            userId: req.body.userId,
+            userId: req.session.userId,
         });
 
         req.session.save(() => {
