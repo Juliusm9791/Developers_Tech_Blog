@@ -7,11 +7,12 @@ const withAuth = require('../utils/auth');
 router.get('/', async (req, res) => {
   try {
     const userData = await Post.findAll({
-      include: [{ model: User }, { model: Comment }],
+      include: [{ model: Comment }, { model: User }],
     });
 
     const allInfo = userData.map((user) => user.get({ plain: true }));
     res.render('homepage', { allInfo, loggedIn: req.session.loggedIn });
+
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
