@@ -1,0 +1,22 @@
+<div class="card text-dark bg-light my-3">
+  <div class="card-header d-inline-flex p-2 justify-content-between">
+    <div class="me-3"><strong>{{title}}</strong></div>
+    <div class="ms-3">Posted By <strong>{{user.username}}</strong> on {{format_date createdAt}} {{format_time
+      createdAt}}</div>
+  </div>
+  <div class="card-body">
+    <p class="card-text">{{text}}</p>
+  </div>
+</div>
+
+
+<form class="my-3">
+  <div class="mb-3">
+    <label for="postText" class="form-label">Comment</label>
+    <textarea class="form-control" id="commentText" rows="3"></textarea>
+  </div>
+  <button type="submit" class="btn btn-primary" id="saveCommentButton">Save Comment</button>
+  <a href="/" class="btn btn-primary">Go Back</a>
+</form>
+
+<script src="/js/addcomment.js"></script>

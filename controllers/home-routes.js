@@ -11,6 +11,7 @@ router.get('/', async (req, res) => {
     });
 
     const allInfo = userData.map((user) => user.get({ plain: true }));
+    console.log(allInfo)
     res.render('homepage', { allInfo, loggedIn: req.session.loggedIn });
 
   } catch (err) {
@@ -40,7 +41,7 @@ router.get('/dashboard', withAuth, async (req, res) => {
 router.get('/dashboard/post/:id', withAuth, async (req, res) => {
   try {
     const postData = await Post.findByPk(req.params.id, {
-      include: [{ model: User },],
+      include: [{ model: User, exclude: ['password'] },],
     });
 
     const allInfo = postData.get({ plain: true });
@@ -59,6 +60,31 @@ router.get('/dashboard/addpost', async (req, res) => {
     res.status(500).json(err);
   }
 });
+
+// router.get('/addcomment', async (req, res) => {
+//   try {
+//     res.render('addcomment', { loggedIn: req.session.loggedIn, userId: req.session.userId });
+//   } catch (err) {
+//     console.log(err);
+//     res.status(500).json(err);
+//   }
+// });
+
+router.get('/addcomment/post/:id', withAuth, async (req, res) => {
+  try {
+    const postData = await Post.findByPk(req.params.id, {
+      include: [{ model: User, exclude: ['password'] }],
+    });
+
+    const allInfo = postData.get({ plain: true });
+    console.log(allInfo)
+    res.render('addcomment', { ...allInfo, loggedIn: req.session.loggedIn });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
 
 router.get('/login', (req, res) => {
   if (req.session.loggedIn) {

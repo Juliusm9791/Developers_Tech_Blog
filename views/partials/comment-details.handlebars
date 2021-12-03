@@ -3,7 +3,7 @@
   <div class="card-body text-primary">
     <p class="card-text">{{comment.comment_text}}</p>
   </div>
-  <div class="card-header text-end"><span class="userCommentedId">{{comment.userId}}</span> {{comment.createdAt}}</div>
+  <div class="card-header text-end"><span class="userCommentedId">{{comment.userId}}</span> {{format_date comment.createdAt}} {{format_time comment.createdAt}}</div>
 </div>
 {{/each}}
 

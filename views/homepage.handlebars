@@ -1,9 +1,10 @@
 {{#each allInfo}}
 <div class="card text-dark bg-light my-3">
-    <div class="card-header d-inline-flex p-2 justify-content-between">
+    <a href="/addcomment/post/{{id}}" class="card-header" style="text-decoration: none;">
+    <div class="d-inline-flex p-2 justify-content-between">
         <div class="me-3"><strong>{{title}}</strong></div>
-        <div class="ms-3">Posted By <strong>{{user.username}}</strong> on {{user.createdAt}}</div>
-    </div>
+        <div class="ms-3">Posted By <strong>{{user.username}}</strong> on {{format_date createdAt}} {{format_time createdAt}}</div>
+    </div></a>
     <div class="card-body">
         <p class="card-text">{{text}}</p>
     </div>
@@ -11,4 +12,3 @@
 </div>
 {{/each}}
 
-<script src="/js/comment.js"></script>
