@@ -1,7 +1,7 @@
 # Developers Tech Blog
 
  [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
- [![Heroku](https://heroku-badge.herokuapp.com/?app=heroku-badge&style=flat)]()
+ [![Heroku](https://heroku-badge.herokuapp.com/?app=heroku-badge&style=flat)](https://thawing-hamlet-74403.herokuapp.com/)
 
 
   ## Table of contents
@@ -14,7 +14,7 @@
 
   ## Description
 
-   [Check it on HEROKU]()
+   [Check it on HEROKU](https://thawing-hamlet-74403.herokuapp.com/)
   
   ![Developers Tech Blog](./public/images/image1.jpg)
 
