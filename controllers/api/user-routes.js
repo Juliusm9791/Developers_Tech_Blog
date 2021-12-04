@@ -13,6 +13,7 @@ router.get('/', async (req, res) => {
   }
 });
 
+// Find all user by id
 router.get('/:id', async (req, res) => {
   try {
     const userData = await User.findByPk(req.params.id, {
@@ -41,6 +42,7 @@ router.post('/', async (req, res) => {
 
     req.session.save(() => {
       req.session.userId = userData.id;
+      req.session.username = userData.username;
       req.session.loggedIn = true;
 
       res.status(200).json(userData);
@@ -78,6 +80,7 @@ router.post('/login', async (req, res) => {
 
     req.session.save(() => {
       req.session.userId = userData.id;
+      req.session.username = userData.username;
       req.session.loggedIn = true;
 
       res

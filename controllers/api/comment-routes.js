@@ -2,7 +2,7 @@ const router = require('express').Router();
 const { User, Post, Comment } = require('../../models');
 const withAuth = require('../../utils/auth');
 
-// Find all posts
+// Find all comments
 router.get('/', async (req, res) => {
     try {
         const commentData = await Comment.findAll({
@@ -21,6 +21,7 @@ router.post('/', withAuth, async (req, res) => {
             comment_text: req.body.text,
             postId: req.body.postId,
             userId: req.session.userId,
+            username: req.session.username,
         });
 
         req.session.save(() => {

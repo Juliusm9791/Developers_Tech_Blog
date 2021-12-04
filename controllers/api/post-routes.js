@@ -14,6 +14,7 @@ router.get('/', async (req, res) => {
     }
 });
 
+// Find posts by id
 router.get('/:id', async (req, res) => {
     try {
         const postData = await Post.findByPk(req.params.id, {
@@ -51,7 +52,7 @@ router.post('/', withAuth, async (req, res) => {
     }
 });
 
-// Update a post by its `id` value
+// Update a post by id
 router.put('/:id', async (req, res) => {
     try {
         const postData = await Post.update(
@@ -69,7 +70,7 @@ router.put('/:id', async (req, res) => {
     }
 });
 
-// delete a post by its `id` value
+// delete a post by id
 router.delete('/:id', async (req, res) => {
     try {
         const postData = await Post.destroy({

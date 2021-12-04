@@ -14,7 +14,7 @@ const loginFormHandler = async (event) => {
     if (response.ok) {
       document.location.replace('/dashboard');
     } else {
-      alert('Failed to log in.');
+      alert('Failed to login e-mail or password is incorrect.');
     }
   }
 };
@@ -36,7 +36,7 @@ const signupFormHandler = async (event) => {
     if (response.ok) {
       document.location.replace('/dashboard');
     } else {
-      alert('Failed to sign up.');
+      alert('Failed to sign up. \nUser is already exist or min password lenth is not 8 symbols');
     }
   }
 };

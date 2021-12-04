@@ -29,6 +29,10 @@ Comment.init(
         key: 'id',
       },
     },
+    username: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
   },
   {
     sequelize,

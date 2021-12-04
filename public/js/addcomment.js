@@ -16,7 +16,7 @@ const addCommentFormHandler = async (event) => {
     if (response.ok) {
       document.location.replace('/');
     } else {
-      alert('Failed to add Comment.');
+      alert('ERROR: Cant add Comment.');
     }
   }
 };
