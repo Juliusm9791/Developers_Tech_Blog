@@ -3,9 +3,20 @@
   "version": "1.0.0",
   "description": "tech blog",
   "main": "server.js",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "connect-session-sequelize": "^7.1.2",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "express-handlebars": "^6.0.2",
+    "express-session": "^1.17.2",
+    "handlebars": "^4.7.7",
+    "mysql2": "^2.3.3",
+    "sequelize": "^6.12.0-alpha.1"
+  },
+  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "seed": "node seeds/index.js",
     "start": "node server.js"
   },
   "repository": {
@@ -20,16 +31,5 @@
   "bugs": {
     "url": "https://github.com/Juliusm9791/Developers_Tech_Blog/issues"
   },
-  "homepage": "https://github.com/Juliusm9791/Developers_Tech_Blog#readme",
-  "dependencies": {
-    "bcrypt": "^5.0.1",
-    "connect-session-sequelize": "^7.1.2",
-    "dotenv": "^10.0.0",
-    "express": "^4.17.1",
-    "express-handlebars": "^6.0.1",
-    "express-session": "^1.17.2",
-    "handlebars": "^4.7.7",
-    "mysql2": "^2.3.3",
-    "sequelize": "^6.12.0-alpha.1"
-  }
+  "homepage": "https://github.com/Juliusm9791/Developers_Tech_Blog#readme"
 }
