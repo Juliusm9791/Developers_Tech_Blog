@@ -73,6 +73,7 @@ router.put('/:id', async (req, res) => {
 router.delete('/:id', async (req, res) => {
     try {
         const postData = await Post.destroy({
+            include: [{ model: Comment }, { model: User }],
             where: { id: req.params.id }
         });
         if (!postData) {

@@ -61,19 +61,11 @@ router.get('/dashboard/addpost', async (req, res) => {
   }
 });
 
-// router.get('/addcomment', async (req, res) => {
-//   try {
-//     res.render('addcomment', { loggedIn: req.session.loggedIn, userId: req.session.userId });
-//   } catch (err) {
-//     console.log(err);
-//     res.status(500).json(err);
-//   }
-// });
 
 router.get('/addcomment/post/:id', withAuth, async (req, res) => {
   try {
     const postData = await Post.findByPk(req.params.id, {
-      include: [{ model: User, exclude: ['password'] }],
+      include: [{ model: User, exclude: ['password'] }, { model: Comment}],
     });
 
     const allInfo = postData.get({ plain: true });

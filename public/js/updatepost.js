@@ -28,6 +28,7 @@ const deletePostFormHandler = async (event) => {
   const id = window.location.toString().split('/')[
     window.location.toString().split('/').length - 1
   ];
+  console.log(id)
     const response = await fetch(`/api/post/${id}`, {
       method: 'DELETE',
     });
@@ -35,7 +36,7 @@ const deletePostFormHandler = async (event) => {
     if (response.ok) {
       document.location.replace('/dashboard');
     } else {
-      alert('Failed to log in.');
+      alert('Failed to Delete.');
     }
   
 };

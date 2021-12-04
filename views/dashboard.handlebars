@@ -1,19 +1,22 @@
 <div>
   <div class="card-body my-3">
-    <h2 class="text-success">This is your posts <strong>{{username}}</strong>!</h2>
+    <h2 class="text-primary">This is your posts <strong>{{username}}</strong>!</h2>
   </div>
 </div>
 <button type="button" class="btn btn-primary my-3" id="addPostButton">Add Post</button>
 
 {{#each posts as |post|}}
 <div class="card text-dark bg-light my-3">
-    <div class="card-header d-inline-flex p-2 justify-content-between">
-        <a class="me-3" href="/dashboard/post/{{post.id}}"><div><strong>{{post.title}}</strong></div></a>
-        <div class="ms-3">Posted By <strong>{{username}}</strong> on {{createdAt}}</div>
+  <a href="/dashboard/post/{{post.id}}" class="card-header d-inline-flex p-2 justify-content-between" style="text-decoration: none;">
+    <div class="me-3" >
+      <div><strong>{{post.title}}</strong></div>
     </div>
-    <div class="card-body">
-        <p class="card-text">{{post.text}}</p>
+    <div class="ms-3">Posted By <strong>{{username}}</strong> on {{format_date createdAt}} {{format_time createdAt}}
     </div>
+  </a>
+  <div class="card-body">
+    <p class="card-text">{{post.text}}</p>
+  </div>
 </div>
 {{/each}}
 

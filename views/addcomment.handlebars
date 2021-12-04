@@ -1,4 +1,4 @@
-<div class="card text-dark bg-light my-3">
+<div class="card text-dark bg-light my-3 ">
   <div class="card-header d-inline-flex p-2 justify-content-between">
     <div class="me-3"><strong>{{title}}</strong></div>
     <div class="ms-3">Posted By <strong>{{user.username}}</strong> on {{format_date createdAt}} {{format_time
@@ -7,12 +7,13 @@
   <div class="card-body">
     <p class="card-text">{{text}}</p>
   </div>
+  {{>comment-details}}
 </div>
 
 
 <form class="my-3">
   <div class="mb-3">
-    <label for="postText" class="form-label">Comment</label>
+    <label for="postText" class="form-label"><strong>Add Comment</strong> </label>
     <textarea class="form-control" id="commentText" rows="3"></textarea>
   </div>
   <button type="submit" class="btn btn-primary" id="saveCommentButton">Save Comment</button>
