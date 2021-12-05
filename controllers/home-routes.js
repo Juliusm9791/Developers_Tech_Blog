@@ -53,7 +53,7 @@ router.get('/dashboard/post/:id', withAuth, async (req, res) => {
   }
 });
 
-router.get('/dashboard/addpost', async (req, res) => {
+router.get('/dashboard/addpost', withAuth, async (req, res) => {
   try {
     res.render('addpost', { loggedIn: req.session.loggedIn, userId: req.session.userId });
   } catch (err) {
